@@ -26,8 +26,6 @@ public class EncryptedEnvironmentProcessor implements EnvironmentPostProcessor {
         HashMap<String, Object> props = new HashMap<>();
         ResourceManager rm = new ResourceManager();
 
-        log.info("ckpt; " + System.getProperty("key-file"));
-
         for (PropertySource<?> ps : environment.getPropertySources()) {
             if (ps instanceof OriginTrackedMapPropertySource) {
                 OriginTrackedMapPropertySource source = (OriginTrackedMapPropertySource) ps;

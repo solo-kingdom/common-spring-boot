@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  pub.wii.common.spring.processor.EncryptedEnvironmentProcessor

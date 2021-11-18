@@ -5,6 +5,7 @@ import pub.wii.common.file.FileUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class ResourceManager {
     private final Map<ResourceType, Map<String, ResourceAccessor>> sm = new HashMap<>();
@@ -26,8 +27,9 @@ public class ResourceManager {
     }
 
     private ResourceAccessor buildFileAccessor(String resource) {
-        String ext = FileUtils.getFileExtension(resource);
-        switch (ext) {
+        Optional<String> ext = FileUtils.getFileExtension(resource);
+        Validate.isTrue(ext.isPresent(), String.format("no file extension. [resource=%s]", resource));
+        switch (ext.get()) {
             case "properties":
             case "prop":
                 return PropertiesFileAccessor.build(resource);
